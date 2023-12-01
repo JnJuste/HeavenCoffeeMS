@@ -23,6 +23,7 @@ public class HeavenCoffeeUser {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID userID;
+    private String userCode;
     private String userNames;
     private String phoneNumber;
     private String email;

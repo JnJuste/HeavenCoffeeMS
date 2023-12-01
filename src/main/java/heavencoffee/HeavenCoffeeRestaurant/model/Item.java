@@ -25,6 +25,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID itemID;
+    private String itemCode;
     private String itemName;
     private BigDecimal unitPrice;
     private Integer stockQuantity;

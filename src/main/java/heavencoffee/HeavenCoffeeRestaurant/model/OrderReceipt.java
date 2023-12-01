@@ -25,6 +25,7 @@ public class OrderReceipt {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID orderReceiptID;
+    private String orderReceiptCode;
     @ManyToOne
     private HeavenCoffeeOrder heavenCoffeeOrder;
     @CreationTimestamp

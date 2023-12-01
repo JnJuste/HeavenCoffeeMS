@@ -25,6 +25,7 @@ public class HeavenCoffeeOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID orderID;
+    private String orderCode;
     @ManyToOne
     private HeavenCoffeeUser heavenCoffeeUser;
     @ManyToOne
