@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class CategoryController {
@@ -34,4 +36,25 @@ public class CategoryController {
         categoryService.saveCategory(category);
         return "redirect:/categories";
     }
+
+    @GetMapping("/categories/edit/{categoryId}")
+    public String editCategoryForm(@PathVariable UUID categoryId, Model model) {
+        Category category = categoryService.findById(categoryId);
+        model.addAttribute("category", category);
+        return "Category/EditCategory";
+    }
+
+    @PostMapping("/categories/update/{categoryId}")
+    public String updateCategory(@PathVariable UUID categoryId, @ModelAttribute("category") Category updatedCategory) {
+        categoryService.updateCategory(categoryId, updatedCategory);
+        return "redirect:/categories";
+    }
+
+    @GetMapping("/categories/delete/{categoryId}")
+    public String deleteCategory(@PathVariable UUID categoryId) {
+        categoryService.deleteCategory(categoryId);
+        return "redirect:/categories";
+    }
+
+    // Add methods for creating and saving a new category if needed
 }

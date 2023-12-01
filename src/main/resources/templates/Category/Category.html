@@ -10,13 +10,13 @@
     <section class="section">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Academic Unit Form</h5>
+          <h5 class="card-title">Category Form</h5>
 
           <!-- Vertical Form -->
           <form class="row g-3" th:action="@{/categories/new}" method="post" th:object="${category}">
             <div class="col-12">
-              <label for="inputCode" class="form-label">Category ID:</label>
-              <input type="text" class="form-control" id="inputCode" name="acc_id" th:field="*{categoryCode}">
+              <label for="categoryCode" class="form-label">Category Code:</label>
+              <input type="text" class="form-control" id="categoryCode" name="categoryCode" th:field="*{categoryCode}">
             </div>
             <div class="col-12">
               <label for="categoryName" class="form-label">Category Name:</label>
@@ -54,18 +54,25 @@
               <table class="table datatable">
                 <thead>
                 <tr>
-                  <th scope="col" hidden="false">ID</th>
-                  <th scope="col">CATEGORY ID</th>
+                  <th scope="col" hidden="true">ID</th>
+                  <th scope="col">CATEGORY CODE</th>
                   <th scope="col">CATEGORY NAME</th>
                   <th scope="col">CREATED AT</th>
+                  <th scope="col">ACTIONS</th> <!-- Add this column for actions -->
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="category:${categories}">
+                <tr th:each="category : ${categories}">
                   <td th:text="${category.categoryID}" hidden="true"></td>
                   <td th:text="${category.categoryCode}"></td>
                   <td th:text="${category.categoryName}"></td>
                   <td th:text="${category.createdAt}"></td>
+                  <td>
+                    <a th:href="@{/categories/edit/{categoryId}(categoryId=${category.categoryID})}"
+                       class="btn btn-info">Edit</a>
+                    <a th:href="@{/categories/delete/{categoryId}(categoryId=${category.categoryID})}"
+                       class="btn btn-danger">Delete</a>
+                  </td>
                 </tr>
                 </tbody>
               </table>
