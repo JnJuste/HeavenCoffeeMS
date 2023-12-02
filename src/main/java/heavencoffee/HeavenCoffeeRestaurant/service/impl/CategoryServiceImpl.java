@@ -3,10 +3,13 @@ package heavencoffee.HeavenCoffeeRestaurant.service.impl;
 import heavencoffee.HeavenCoffeeRestaurant.model.Category;
 import heavencoffee.HeavenCoffeeRestaurant.repository.CategoryRepository;
 import heavencoffee.HeavenCoffeeRestaurant.service.CategoryService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,8 +40,9 @@ public class CategoryServiceImpl implements CategoryService {
             existingCategory.setCategoryCode(updatedCategory.getCategoryCode());
             existingCategory.setCategoryName(updatedCategory.getCategoryName());
             return categoryRepository.save(existingCategory);
+        } else {
+            throw new RuntimeException("Category with ID " + categoryId + " not found");
         }
-        return null; // Or handle not found scenario
     }
 
     @Override
@@ -50,5 +54,4 @@ public class CategoryServiceImpl implements CategoryService {
     public Category findById(UUID categoryId) {
         return categoryRepository.findById(categoryId).orElse(null);
     }
-
 }

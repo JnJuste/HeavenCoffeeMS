@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -44,15 +46,24 @@ public class CategoryController {
     public String editCategoryForm(@PathVariable UUID categoryId, Model model) {
         Category category = categoryService.findById(categoryId);
         model.addAttribute("category", category);
+        model.addAttribute("categoryId", categoryId); // Add this line to pass categoryId to the view
         return "Category/EditCategory";
     }
 
-    //Update Category
+
+    // Update Category
     @PostMapping("/categories/update/{categoryId}")
-    public String updateCategory(@PathVariable UUID categoryId, @ModelAttribute("category") Category updatedCategory) {
-        categoryService.updateCategory(categoryId, updatedCategory);
-        return "redirect:/categories";
+    public String updateCategory(@PathVariable UUID categoryId, @ModelAttribute("category") Category updatedCategory, RedirectAttributes redirectAttributes) {
+        try {
+            categoryService.updateCategory(categoryId, updatedCategory);
+            return "redirect:/categories";
+        } catch (RuntimeException e) {
+            // Handle the exception, e.g., log it or add an error message to the redirect attributes
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            return "redirect:/categories";
+        }
     }
+
 
     //Delete Category
     @GetMapping("/categories/delete/{categoryId}")
