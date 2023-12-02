@@ -1,46 +1,48 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="/Components/header"></th:block>
 
-<main id="main" class="main">
+    <main id="main" class="main">
 
-    <div class="pagetitle">
-        <h1>EDIT CATEGORY</h1>
-    </div>
-
-    <section class="section">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Edit Category Form</h5>
-
-                <!-- Vertical Form -->
-                <form class="row g-3" th:action="@{/categories/update/{categoryId}}"
-                      th:object="${category}" method="post">
-                    <input type="hidden" th:field="*{categoryID}" />
-
-                    <div class="col-12">
-                        <label for="categoryCode" class="form-label">Category Code:</label>
-                        <input type="text" class="form-control" id="categoryCode" name="categoryCode"
-                               th:field="*{categoryCode}" />
-                    </div>
-                    <div class="col-12">
-                        <label for="categoryName" class="form-label">Category Name:</label>
-                        <input type="text" class="form-control" id="categoryName" name="categoryName"
-                               th:field="*{categoryName}" />
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                        <a th:href="@{/categories}" class="btn btn-secondary">Cancel</a>
-                    </div>
-                </form><!-- Vertical Form -->
-
-            </div>
+        <div class="pagetitle">
+            <h1>EDIT CATEGORY</h1>
         </div>
-    </section>
 
-</main><!-- End #main -->
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Category Form</h5>
 
-<!-- Vendor JS Files -->
+                    <!-- Vertical Form -->
+                    <form class="row g-3" th:action="@{/categories/update/{categoryId}}"
+                          th:object="${category}" method="post">
+                        <input type="hidden" th:field="*{categoryID}" />
+
+                        <div class="col-12">
+                            <label for="categoryCode" class="form-label">Category Code:</label>
+                            <input type="text" class="form-control" id="categoryCode" name="categoryCode"
+                                   th:field="*{categoryCode}" />
+                        </div>
+                        <div class="col-12">
+                            <label for="categoryName" class="form-label">Category Name:</label>
+                            <input type="text" class="form-control" id="categoryName" name="categoryName"
+                                   th:field="*{categoryName}" />
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a th:href="@{/categories}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form><!-- Vertical Form -->
+
+                </div>
+            </div>
+        </section>
+
+        </main><!-- End #main -->
+
+    <th:block th:replace="/Components/footer :: #footer"></th:block> <!--Link the footer -->
+
+    <!-- Vendor JS Files -->
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/chart.js/chart.umd.js"></script>

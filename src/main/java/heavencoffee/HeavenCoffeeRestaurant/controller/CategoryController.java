@@ -22,6 +22,7 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+    //List all Categories
     @GetMapping("/categories")
     public String createCategoryForm(Model model){
         Category category = new Category();
@@ -31,12 +32,14 @@ public class CategoryController {
         return "Category/Category";
     }
 
+    //Save a new Category
     @PostMapping("/categories/new")
     public String saveCategory(@ModelAttribute("category") Category category) {
         categoryService.saveCategory(category);
         return "redirect:/categories";
     }
 
+    //Find Category by ID
     @GetMapping("/categories/edit/{categoryId}")
     public String editCategoryForm(@PathVariable UUID categoryId, Model model) {
         Category category = categoryService.findById(categoryId);
@@ -44,17 +47,17 @@ public class CategoryController {
         return "Category/EditCategory";
     }
 
+    //Update Category
     @PostMapping("/categories/update/{categoryId}")
     public String updateCategory(@PathVariable UUID categoryId, @ModelAttribute("category") Category updatedCategory) {
         categoryService.updateCategory(categoryId, updatedCategory);
         return "redirect:/categories";
     }
 
+    //Delete Category
     @GetMapping("/categories/delete/{categoryId}")
     public String deleteCategory(@PathVariable UUID categoryId) {
         categoryService.deleteCategory(categoryId);
         return "redirect:/categories";
     }
-
-    // Add methods for creating and saving a new category if needed
 }
