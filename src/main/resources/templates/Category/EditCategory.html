@@ -13,7 +13,7 @@
                 <h5 class="card-title">Edit Category Form</h5>
 
                 <!-- Vertical Form -->
-                <form class="row g-3" th:action="@{/categories/update/{categoryId}(categoryId=${categoryId})}" th:object="${category}" method="post">
+                <form class="row g-3" th:action="@{/categories/{categoryId}/update(categoryId=${categoryId})}" th:object="${category}" method="post">
                     <input type="hidden" th:field="*{categoryID}" />
 
                     <div class="col-12">
@@ -40,17 +40,17 @@
     <th:block th:replace="/Components/footer :: #footer"></th:block> <!--Link the footer -->
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
+    <script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
+    <script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
+    <script th:src="@{assets/vendor/quill/quill.min.js}"></script>
+    <script th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
+    <script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script th:src="@{assets/js/main.js}"></script>
 </body>
 
 </html>
