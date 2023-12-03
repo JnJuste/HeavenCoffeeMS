@@ -32,4 +32,6 @@ public class Item {
     private EItemStatus eItemStatus;
     @CreationTimestamp
     private LocalDateTime createdAt;
+    @CreationTimestamp
+    private LocalDateTime modifiedAt;
 }
