@@ -75,10 +75,10 @@
               <table class="table datatable">
                 <thead>
                 <tr>
-                  <th scope="col" hidden>ID</th>
+                  <th scope="col" hidden="true">ID</th>
                   <th scope="col">CODE</th>
                   <th scope="col">NAME</th>
-                  <th scope="col">UNIT PRICE</th>
+                  <th scope="col">PRICE/U</th>
                   <th scope="col">QUANTITY</th>
                   <th scope="col">STATUS</th>
                   <th scope="col">CREATED AT</th>
@@ -87,7 +87,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="item : ${items}">
-                  <td th:text="${item.itemID}" hidden></td>
+                  <td th:text="${item.itemID}" hidden="true"></td>
                   <td th:text="${item.itemCode}"></td>
                   <td th:text="${item.itemName}"></td>
                   <td th:text="${item.unitPrice}"></td>

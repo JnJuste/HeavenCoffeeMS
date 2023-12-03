@@ -54,7 +54,7 @@
               <table class="table datatable">
                 <thead>
                 <tr>
-                  <th scope="col" hidden>ID</th>
+                  <th scope="col" hidden="true">ID</th>
                   <th scope="col">CATEGORY CODE</th>
                   <th scope="col">CATEGORY NAME</th>
                   <th scope="col">CREATED AT</th>
@@ -63,7 +63,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="category : ${categories}">
-                  <td th:text="${category.categoryID}" hidden></td>
+                  <td th:text="${category.categoryID}" hidden="true"></td>
                   <td th:text="${category.categoryCode}"></td>
                   <td th:text="${category.categoryName}"></td>
                   <td th:text="${category.createdAt}"></td>
