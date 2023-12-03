@@ -1,0 +1,75 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/Components/header"></th:block>
+
+<main id="main" class="main">
+
+    <div>
+        <h1>EDIT ITEM</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Edit Item Form</h5>
+
+                <!-- Vertical Form -->
+                <form class="row g-3" th:action="@{/items/{itemId}/update(itemId=${itemId})}" th:object="${item}" method="post">
+                    <input type="hidden" th:field="*{itemID}" />
+                    <div class="col-12">
+                        <label for="itemCode" class="form-label">Item Code:</label>
+                        <input type="text" class="form-control" id="itemCode" name="itemCode" th:field="*{itemCode}" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="itemName" class="form-label">Item Name:</label>
+                        <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="unitPrice" class="form-label">Unit Price:</label>
+                        <input type="text" class="form-control" id="unitPrice" name="unitPrice" th:field="*{unitPrice}" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="stockQuantity" class="form-label">Quantity:</label>
+                        <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" th:field="*{stockQuantity}" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="itemStatus" class="col-sm-12 col-form-label">Status:</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" id="itemStatus" name="itemStatus" th:field="*{itemStatus}" required>
+                                <!-- Iterate over enum values and populate options -->
+                                <option th:each="status : ${T(heavencoffee.HeavenCoffeeRestaurant.model.EItemStatus).values()}"
+                                        th:value="${status}" th:text="${status}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button th:href="@{/items}" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form><!-- Vertical Form -->
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+    <th:block th:replace="/Components/footer :: #footer"></th:block> <!--Link the footer -->
+
+    <!-- Vendor JS Files -->
+    <script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
+    <script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
+    <script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
+    <script th:src="@{assets/vendor/quill/quill.min.js}"></script>
+    <script th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
+    <script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+
+    <!-- Template Main JS File -->
+    <script th:src="@{assets/js/main.js}"></script>
+
+</html>

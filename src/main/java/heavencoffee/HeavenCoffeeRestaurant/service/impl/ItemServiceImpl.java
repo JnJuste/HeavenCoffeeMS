@@ -1,6 +1,5 @@
 package heavencoffee.HeavenCoffeeRestaurant.service.impl;
 
-
 import heavencoffee.HeavenCoffeeRestaurant.model.Item;
 import heavencoffee.HeavenCoffeeRestaurant.repository.ItemRepository;
 import heavencoffee.HeavenCoffeeRestaurant.service.ItemService;
@@ -13,7 +12,7 @@ import java.util.UUID;
 
 @Service
 public class ItemServiceImpl implements ItemService {
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     @Autowired
     public ItemServiceImpl(ItemRepository itemRepository){
@@ -22,8 +21,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> findAllItems() {
-        List<Item> items = itemRepository.findAll();
-        return items;
+        return itemRepository.findAll();
     }
 
     @Override
@@ -45,7 +43,7 @@ public class ItemServiceImpl implements ItemService {
             existingItem.setItemName(updatedItem.getItemName());
             existingItem.setUnitPrice(updatedItem.getUnitPrice());
             existingItem.setStockQuantity(updatedItem.getStockQuantity());
-            existingItem.setEItemStatus(updatedItem.getEItemStatus());
+            existingItem.setItemStatus(updatedItem.getItemStatus());
             existingItem.setModifiedAt(updatedItem.getModifiedAt());
             return itemRepository.save(existingItem);
         } else {
@@ -55,6 +53,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void deleteItem(UUID itemId) {
-         itemRepository.deleteById(itemId);
+        itemRepository.deleteById(itemId);
     }
 }

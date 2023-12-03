@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Service
 public class HeavenCoffeeOrderServiceImpl implements HeavenCoffeeOrderService {
-    private HeavenCoffeeOrderRepository heavenCoffeeOrderRepository;
+    private final HeavenCoffeeOrderRepository heavenCoffeeOrderRepository;
 
     @Autowired
     public HeavenCoffeeOrderServiceImpl(HeavenCoffeeOrderRepository heavenCoffeeOrderRepository){
@@ -21,8 +21,7 @@ public class HeavenCoffeeOrderServiceImpl implements HeavenCoffeeOrderService {
 
     @Override
     public List<HeavenCoffeeOrder> findAllHeavenCoffeeOrders() {
-        List<HeavenCoffeeOrder> heavenCoffeeOrders = heavenCoffeeOrderRepository.findAll();
-        return heavenCoffeeOrders;
+        return heavenCoffeeOrderRepository.findAll();
     }
 
     @Override

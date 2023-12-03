@@ -29,7 +29,7 @@ public class Item {
     private String itemName;
     private BigDecimal unitPrice;
     private Integer stockQuantity;
-    private EItemStatus eItemStatus;
+    private EItemStatus itemStatus;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @CreationTimestamp

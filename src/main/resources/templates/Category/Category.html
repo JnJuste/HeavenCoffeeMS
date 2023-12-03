@@ -3,7 +3,7 @@
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
+    <div>
       <h1>CATEGORY PAGE</h1>
     </div><!-- End Page Title -->
 
@@ -16,11 +16,11 @@
           <form class="row g-3" th:action="@{/categories/new}" method="post" th:object="${category}">
             <div class="col-12">
               <label for="categoryCode" class="form-label">Category Code:</label>
-              <input type="text" class="form-control" id="categoryCode" name="categoryCode" th:field="*{categoryCode}">
+              <input type="text" class="form-control" id="categoryCode" name="categoryCode" th:field="*{categoryCode}" required>
             </div>
             <div class="col-12">
               <label for="categoryName" class="form-label">Category Name:</label>
-              <input type="text" class="form-control" id="categoryName" name="categoryName" th:field="*{categoryName}">
+              <input type="text" class="form-control" id="categoryName" name="categoryName" th:field="*{categoryName}" required>
             </div>
 
             <div class="text-center">
@@ -70,7 +70,7 @@
                   <td>
                     <a th:href="@{/categories/{categoryId}/edit(categoryId=${category.categoryID})}"
                        class="btn btn-warning">Edit</a>
-                    <a th:href="@{/categories/{categoryId}/delete(categoryId=${category.categoryID})}"
+                    <a th:href="@{/categories/{categoryId}/delete(categoryId=${category.categoryID})}" onclick="return confirmDelete()"
                        class="btn btn-danger">Delete</a>
                   </td>
                 </tr>
@@ -101,6 +101,10 @@
 
   <!-- Template Main JS File -->
   <script th:src="@{assets/js/main.js}"></script>
-</body>
+  <script>
+    function confirmDelete() {
+      return confirm("Are you sure you want to delete this Category Info?");
+    }
+  </script>
 
 </html>

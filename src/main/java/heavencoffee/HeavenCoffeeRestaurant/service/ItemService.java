@@ -1,5 +1,6 @@
 package heavencoffee.HeavenCoffeeRestaurant.service;
 
+import heavencoffee.HeavenCoffeeRestaurant.model.Category;
 import heavencoffee.HeavenCoffeeRestaurant.model.Item;
 import org.springframework.stereotype.Service;
 

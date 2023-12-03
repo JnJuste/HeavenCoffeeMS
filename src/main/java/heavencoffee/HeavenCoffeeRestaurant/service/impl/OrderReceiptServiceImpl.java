@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Service
 public class OrderReceiptServiceImpl implements OrderReceiptService {
-    private OrderReceiptRepository orderReceiptRepository;
+    private final OrderReceiptRepository orderReceiptRepository;
 
     @Autowired
     public OrderReceiptServiceImpl(OrderReceiptRepository orderReceiptRepository){
@@ -21,8 +21,7 @@ public class OrderReceiptServiceImpl implements OrderReceiptService {
 
     @Override
     public List<OrderReceipt> findAllOrderReceipts() {
-        List<OrderReceipt> orderReceipts = orderReceiptRepository.findAll();
-        return orderReceipts;
+        return orderReceiptRepository.findAll();
     }
 
     @Override

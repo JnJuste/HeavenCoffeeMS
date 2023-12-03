@@ -22,6 +22,7 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
     //List all Categories
     @GetMapping
     public String createCategoryForm(Model model){
@@ -31,6 +32,7 @@ public class CategoryController {
         model.addAttribute("category", category);
         return "Category/Category";
     }
+
 
     //Save a new Category
     @PostMapping("/new")
@@ -56,7 +58,7 @@ public class CategoryController {
             categoryService.updateCategory(categoryId, updatedCategory);
             return "redirect:/categories";
         } catch (RuntimeException e) {
-            // Handle the exception, e.g., log it or add an error message to the redirect attributes
+            // Handle the exception (log it or add an error message to the redirect attributes)
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             return "redirect:/categories";
         }
