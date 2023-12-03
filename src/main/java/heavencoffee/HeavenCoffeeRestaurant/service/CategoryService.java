@@ -9,8 +9,8 @@ import java.util.UUID;
 @Service
 public interface CategoryService {
     List<Category> findAllCategories();
-    Category saveCategory(Category category);
+    void saveCategory(Category category);
     Category findById(UUID categoryId);
-    Category updateCategory(UUID categoryId, Category updatedCategory);
+    void updateCategory(UUID categoryId, Category updatedCategory);
     void deleteCategory(UUID categoryId);
 }

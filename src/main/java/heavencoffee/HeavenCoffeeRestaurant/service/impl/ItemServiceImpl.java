@@ -25,8 +25,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item saveItem(Item item) {
-        return itemRepository.save(item);
+    public void saveItem(Item item) {
+        itemRepository.save(item);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item updateItem(UUID itemId, Item updatedItem) {
+    public void updateItem(UUID itemId, Item updatedItem) {
         Optional<Item> optionalItem = itemRepository.findById(itemId);
         if (optionalItem.isPresent()) {
             Item existingItem = optionalItem.get();
@@ -45,7 +45,7 @@ public class ItemServiceImpl implements ItemService {
             existingItem.setStockQuantity(updatedItem.getStockQuantity());
             existingItem.setItemStatus(updatedItem.getItemStatus());
             existingItem.setModifiedAt(updatedItem.getModifiedAt());
-            return itemRepository.save(existingItem);
+            itemRepository.save(existingItem);
         } else {
             throw new RuntimeException("Item with ID " + itemId + " is not found!");
         }
