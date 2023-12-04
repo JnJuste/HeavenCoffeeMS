@@ -11,6 +11,6 @@ public interface HeavenCoffeeOrderService {
     List<HeavenCoffeeOrder> findAllHeavenCoffeeOrders();
     HeavenCoffeeOrder saveHeavenCoffeeOrder(HeavenCoffeeOrder heavenCoffeeOrder);
     HeavenCoffeeOrder findById(UUID orderId);
-    HeavenCoffeeOrder updateHeavenCoffeeUser(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder);
+    HeavenCoffeeOrder updateHeavenCoffeeOrder(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder);
     void deleteHeavenCoffeeOrder(UUID orderId);
 }

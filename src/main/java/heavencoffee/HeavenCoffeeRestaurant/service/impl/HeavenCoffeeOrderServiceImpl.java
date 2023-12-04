@@ -35,7 +35,7 @@ public class HeavenCoffeeOrderServiceImpl implements HeavenCoffeeOrderService {
     }
 
     @Override
-    public HeavenCoffeeOrder updateHeavenCoffeeUser(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder) {
+    public HeavenCoffeeOrder updateHeavenCoffeeOrder(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder) {
         Optional<HeavenCoffeeOrder> optionalHeavenCoffeeOrder = heavenCoffeeOrderRepository.findById(orderId);
         if (optionalHeavenCoffeeOrder.isPresent()) {
             HeavenCoffeeOrder existingHeavenCoffeeOrder = optionalHeavenCoffeeOrder.get();
