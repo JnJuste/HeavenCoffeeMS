@@ -32,7 +32,5 @@ public class HeavenCoffeeOrder {
     private BigDecimal totalAmount;
     @CreationTimestamp
     private LocalDateTime orderDate;
-    @CreationTimestamp
-    private LocalDateTime modifiedDate;
 
 }

@@ -9,8 +9,8 @@ import java.util.UUID;
 @Service
 public interface HeavenCoffeeOrderService {
     List<HeavenCoffeeOrder> findAllHeavenCoffeeOrders();
-    HeavenCoffeeOrder saveHeavenCoffeeOrder(HeavenCoffeeOrder heavenCoffeeOrder);
-    HeavenCoffeeOrder findById(UUID orderId);
-    HeavenCoffeeOrder updateHeavenCoffeeOrder(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder);
+    void saveHeavenCoffeeOrder(HeavenCoffeeOrder heavenCoffeeOrder);
+    HeavenCoffeeOrder findOrderById(UUID orderId);
+    void updateHeavenCoffeeOrder(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder);
     void deleteHeavenCoffeeOrder(UUID orderId);
 }

@@ -26,6 +26,4 @@ public class Category {
     private String categoryName;
     @CreationTimestamp
     private LocalDateTime createdAt;
-    @CreationTimestamp
-    private LocalDateTime modifiedAt;
 }

@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface OrderReceiptService {
     List<OrderReceipt> findAllOrderReceipts();
     OrderReceipt saveOrderReceipt(OrderReceipt orderReceipt);
-    OrderReceipt findById(UUID orderReceiptId);
+    OrderReceipt findOrderById(UUID orderReceiptId);
     OrderReceipt updateOrderReceipt(UUID orderReceiptId, OrderReceipt updatedOrderReceipt);
     void deleteOrderReceipt(UUID orderReceiptId);
 }

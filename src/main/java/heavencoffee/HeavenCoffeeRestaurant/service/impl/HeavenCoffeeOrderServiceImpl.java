@@ -25,17 +25,17 @@ public class HeavenCoffeeOrderServiceImpl implements HeavenCoffeeOrderService {
     }
 
     @Override
-    public HeavenCoffeeOrder saveHeavenCoffeeOrder(HeavenCoffeeOrder heavenCoffeeOrder) {
-        return heavenCoffeeOrderRepository.save(heavenCoffeeOrder);
+    public void saveHeavenCoffeeOrder(HeavenCoffeeOrder heavenCoffeeOrder) {
+        heavenCoffeeOrderRepository.save(heavenCoffeeOrder);
     }
 
     @Override
-    public HeavenCoffeeOrder findById(UUID orderId) {
+    public HeavenCoffeeOrder findOrderById(UUID orderId) {
         return heavenCoffeeOrderRepository.findById(orderId).orElse(null);
     }
 
     @Override
-    public HeavenCoffeeOrder updateHeavenCoffeeOrder(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder) {
+    public void updateHeavenCoffeeOrder(UUID orderId, HeavenCoffeeOrder updatedHeavenCoffeeOrder) {
         Optional<HeavenCoffeeOrder> optionalHeavenCoffeeOrder = heavenCoffeeOrderRepository.findById(orderId);
         if (optionalHeavenCoffeeOrder.isPresent()) {
             HeavenCoffeeOrder existingHeavenCoffeeOrder = optionalHeavenCoffeeOrder.get();
@@ -44,8 +44,8 @@ public class HeavenCoffeeOrderServiceImpl implements HeavenCoffeeOrderService {
             existingHeavenCoffeeOrder.setItem(updatedHeavenCoffeeOrder.getItem());
             existingHeavenCoffeeOrder.setQuantity(updatedHeavenCoffeeOrder.getQuantity());
             existingHeavenCoffeeOrder.setTotalAmount(updatedHeavenCoffeeOrder.getTotalAmount());
-            existingHeavenCoffeeOrder.setModifiedDate(updatedHeavenCoffeeOrder.getModifiedDate());
-            return heavenCoffeeOrderRepository.save(existingHeavenCoffeeOrder);
+            existingHeavenCoffeeOrder.setOrderDate(updatedHeavenCoffeeOrder.getOrderDate());
+            heavenCoffeeOrderRepository.save(existingHeavenCoffeeOrder);
         } else {
             throw new RuntimeException("Heaven Coffee Order with ID " + orderId + " is not found!");
         }

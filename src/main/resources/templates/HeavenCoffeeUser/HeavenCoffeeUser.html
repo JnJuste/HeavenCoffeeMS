@@ -1,56 +1,50 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="/Components/header"></th:block>
 
   <main id="main" class="main">
 
     <div>
-      <h1>ITEM PAGE</h1>
+      <h1>USER PAGE</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Item Form</h5>
+          <h5 class="card-title">Heaven Coffee User Form</h5>
 
           <!-- Vertical Form -->
-          <form class="row g-3" th:action="@{/items/new}" method="post" th:object="${item}">
+          <form class="row g-3" th:action="@{/heavenCoffeeUsers/new}" method="post" th:object="${heavenCoffeeUser}">
             <div class="col-12">
-              <label for="itemCode" class="form-label">Item Code:</label>
-              <input type="text" class="form-control" id="itemCode" name="itemCode" th:field="*{itemCode}" required>
+              <label for="userCode" class="form-label">User Code:</label>
+              <input type="text" class="form-control" id="userCode" name="userCode" th:field="*{userCode}" required>
             </div>
             <div class="col-12">
-              <label for="itemName" class="form-label">Item Name:</label>
-              <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}" required>
+              <label for="userNames" class="form-label">User Name:</label>
+              <input type="text" class="form-control" id="userNames" name="userNames" th:field="*{userNames}" required>
             </div>
 
             <div class="col-12">
-              <label class="col-sm-12 col-form-label">Category:</label>
+              <label for="phoneNumber" class="form-label">Phone Number:</label>
+              <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" required>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required>
+            </div>
+
+            <div class="col-12">
+              <label for="password" class="form-label">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required>
+            </div>
+
+            <div class="col-12">
+              <label for="userRole" class="col-sm-12 col-form-label">Role:</label>
               <div class="col-sm-12">
-                <label for="category"></label><select class="form-select" name="category" id="category" th:field="*{category.categoryID}">
-                <th:block th:each="categoryFrom: ${categories}">
-                  <option th:value="${categoryFrom.categoryID}">[[${categoryFrom.categoryCode}]] - [[${categoryFrom.categoryName}]]</option>
-                </th:block>
-              </select>
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="unitPrice" class="form-label">Unit Price:</label>
-              <input type="text" class="form-control" id="unitPrice" name="unitPrice" th:field="*{unitPrice}" required>
-            </div>
-
-            <div class="col-12">
-              <label for="stockQuantity" class="form-label">Quantity:</label>
-              <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" th:field="*{stockQuantity}" required>
-            </div>
-
-            <div class="col-12">
-              <label for="itemStatus" class="col-sm-12 col-form-label">Status:</label>
-              <div class="col-sm-12">
-                <select class="form-control" id="itemStatus" name="itemStatus" th:field="*{itemStatus}" required>
+                <select class="form-control" id="userRole" name="userRole" th:field="*{userRole}" required>
                   <!-- Iterate over enum values and populate options -->
-                  <option th:each="status : ${T(heavencoffee.HeavenCoffeeRestaurant.model.EItemStatus).values()}"
-                          th:value="${status}" th:text="${status}"></option>
+                  <option th:each="role : ${T(heavencoffee.HeavenCoffeeRestaurant.model.EUserRole).values()}"
+                          th:value="${role}" th:text="${role}"></option>
                 </select>
               </div>
             </div>
@@ -66,7 +60,7 @@
     </section>
 
     <div class="pagetitle">
-      <h1>ITEMS TABLE</h1>
+      <h1>USERS TABLE</h1>
       <nav>
         <ol class="breadcrumb">
         </ol>
@@ -79,7 +73,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">LIST OF ITEMS</h5>
+              <h5 class="card-title">LIST OF USERS</h5>
               <p></p>
 
               <!-- Table with stripped rows -->
@@ -89,28 +83,28 @@
                   <th scope="col" hidden="true">ID</th>
                   <th scope="col">CODE</th>
                   <th scope="col">NAME</th>
-                  <th scope="col">CATEGORY</th>
-                  <th scope="col">PRICE/U</th>
-                  <th scope="col">QUANTITY</th>
-                  <th scope="col">STATUS</th>
+                  <th scope="col">PHONE</th>
+                  <th scope="col">EMAIL</th>
+                  <th scope="col" hidden="true">PASSWORD</th>
+                  <th scope="col">ROLE</th>
                   <th scope="col" hidden="true">CREATED AT</th>
                   <th scope="col">ACTIONS</th> <!-- Add this column for actions -->
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="item : ${items}">
-                  <td th:text="${item.itemID}" hidden="true"></td>
-                  <td th:text="${item.itemCode}"></td>
-                  <td th:text="${item.itemName}"></td>
-                  <td th:text="${item.category.categoryName}"></td>
-                  <td th:text="${item.unitPrice}"></td>
-                  <td th:text="${item.stockQuantity}"></td>
-                  <td th:text="${item.itemStatus}"></td>
-                  <td th:text="${item.createdAt}" hidden="true"></td>
+                <tr th:each="heavenCoffeeUser : ${heavenCoffeeUsers}">
+                  <td th:text="${heavenCoffeeUser.userID}" hidden="true"></td>
+                  <td th:text="${heavenCoffeeUser.userCode}"></td>
+                  <td th:text="${heavenCoffeeUser.userNames}"></td>
+                  <td th:text="${heavenCoffeeUser.phoneNumber}"></td>
+                  <td th:text="${heavenCoffeeUser.email}"></td>
+                  <td th:text="${heavenCoffeeUser.password}" hidden="true"></td>
+                  <td th:text="${heavenCoffeeUser.userRole}"></td>
+                  <td th:text="${heavenCoffeeUser.createdAt}" hidden="true"></td>
                   <td>
-                    <a th:href="@{/items/{itemId}/edit(itemId=${item.itemID})}"
+                    <a th:href="@{/heavenCoffeeUsers/{userId}/edit(userId=${heavenCoffeeUser.userID})}"
                        class="btn btn-warning">Edit</a>
-                    <a th:href="@{/items/{itemId}/delete(itemId=${item.itemID})}" onclick="return confirmDelete()"
+                    <a th:href="@{/heavenCoffeeUsers/{userId}/delete(userId=${heavenCoffeeUser.userID})}" onclick="return confirmDelete()"
                        class="btn btn-danger">Delete</a>
                   </td>
                 </tr>
@@ -143,7 +137,7 @@
   <script th:src="@{assets/js/main.js}"></script>
   <script>
     function confirmDelete() {
-      return confirm("Are you sure you want to delete this Item Info?");
+      return confirm("Are you sure you want to delete this User Info?");
     }
   </script>
 </body>

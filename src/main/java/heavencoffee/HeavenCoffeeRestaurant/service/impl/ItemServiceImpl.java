@@ -30,7 +30,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item findById(UUID itemId) {
+    public Item findItemById(UUID itemId) {
         return itemRepository.findById(itemId).orElse(null);
     }
 
@@ -41,10 +41,10 @@ public class ItemServiceImpl implements ItemService {
             Item existingItem = optionalItem.get();
             existingItem.setItemCode(updatedItem.getItemCode());
             existingItem.setItemName(updatedItem.getItemName());
+            existingItem.setCategory(updatedItem.getCategory());
             existingItem.setUnitPrice(updatedItem.getUnitPrice());
             existingItem.setStockQuantity(updatedItem.getStockQuantity());
             existingItem.setItemStatus(updatedItem.getItemStatus());
-            existingItem.setModifiedAt(updatedItem.getModifiedAt());
             itemRepository.save(existingItem);
         } else {
             throw new RuntimeException("Item with ID " + itemId + " is not found!");

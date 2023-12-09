@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface ItemService {
     List<Item> findAllItems();
     void saveItem (Item item);
-    Item findById(UUID itemId);
+    Item findItemById(UUID itemId);
     void updateItem(UUID itemId, Item updatedItem);
     void deleteItem(UUID itemId);
 }

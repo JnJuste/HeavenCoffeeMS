@@ -1,0 +1,105 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/Components/header"></th:block>
+
+<main id="main" class="main">
+
+    <div>
+        <h1>EDIT HEAVEN COFFEE ORDER</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Edit Order Form</h5>
+
+                <!-- Vertical Form -->
+                <form class="row g-3" th:action="@{/heavenCoffeeOrders/{orderId}/update(orderId=${orderId})}" th:object="${heavenCoffeeOrder}" method="post">
+                    <input type="hidden" th:field="*{orderID}" />
+                    <div class="col-12">
+                        <label for="orderCode" class="form-label">Order Code:</label>
+                        <input type="text" class="form-control" id="orderCode" name="orderCode" th:field="*{orderCode}" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="col-sm-12 col-form-label">User Code & Names:</label>
+                        <div class="col-sm-12">
+                            <label for="heavenCoffeeUser"></label><select class="form-select" name="heavenCoffeeUser" id="heavenCoffeeUser" th:field="*{heavenCoffeeUser.userID}">
+                            <th:block th:each="userFrom: ${heavenCoffeeUsers}">
+                                <option th:value="${userFrom.userID}">[[${userFrom.userCode}]] - [[${userFrom.userNames}]]</option>
+                            </th:block>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="quantity" class="form-label">Quantity:</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" th:field="*{quantity}" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="col-sm-12 col-form-label">Item Code & Name & Price/Unit:</label>
+                        <div class="col-sm-12">
+                            <label for="item"></label>
+                            <select class="form-select" name="item" id="item" th:field="*{item.itemID}" onchange="updateTotalAmount()">
+                                <th:block th:each="itemsFrom: ${items}">
+                                    <option th:value="${itemsFrom.itemID}" th:data-unit-price="${itemsFrom.unitPrice}">
+                                        [[${itemsFrom.itemCode}]] - [[${itemsFrom.itemName}]] - [[${itemsFrom.unitPrice}]]
+                                    </option>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="totalAmount" class="form-label">Total Price:</label>
+                        <input type="number" class="form-control" id="totalAmount" name="totalAmount" th:field="*{totalAmount}" required>
+                    </div>
+
+                    <script>
+                        function updateTotalAmount() {
+                            var selectedItem = document.getElementById("item");
+                            var unitPrice = selectedItem.options[selectedItem.selectedIndex].getAttribute("data-unit-price");
+                            var quantity = document.getElementById("quantity").value;
+
+                            // Validate if quantity is a valid number
+                            if (isNaN(quantity) || quantity <= 0) {
+                                alert("Please enter a valid quantity.");
+                                document.getElementById("quantity").value = 1; // Reset quantity to 1
+                                quantity = 1;
+                            }
+
+                            var totalAmount = unitPrice * quantity;
+                            document.getElementById("totalAmount").value = totalAmount;
+                        }
+                    </script>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button th:href="@{/heavenCoffeeOrders}" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form><!-- Vertical Form -->
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<th:block th:replace="/Components/footer :: #footer"></th:block> <!--Link the footer -->
+
+    <!-- Vendor JS Files -->
+    <script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
+    <script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
+    <script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
+    <script th:src="@{assets/vendor/quill/quill.min.js}"></script>
+    <script th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
+    <script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+
+    <!-- Template Main JS File -->
+    <script th:src="@{assets/js/main.js}"></script>
+
+</body>
+
+</html>

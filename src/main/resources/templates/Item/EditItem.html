@@ -25,6 +25,17 @@
                     </div>
 
                     <div class="col-12">
+                        <label class="col-sm-12 col-form-label">Category:</label>
+                        <div class="col-sm-12">
+                            <label for="category"></label><select class="form-select" name="category" id="category" th:field="*{category.categoryID}">
+                            <th:block th:each="categoryFrom: ${categories}">
+                                <option th:value="${categoryFrom.categoryID}">[[${categoryFrom.categoryCode}]] - [[${categoryFrom.categoryName}]]</option>
+                            </th:block>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
                         <label for="unitPrice" class="form-label">Unit Price:</label>
                         <input type="text" class="form-control" id="unitPrice" name="unitPrice" th:field="*{unitPrice}" required>
                     </div>

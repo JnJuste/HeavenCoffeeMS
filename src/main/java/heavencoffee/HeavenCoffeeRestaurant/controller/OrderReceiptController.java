@@ -1,5 +1,6 @@
 package heavencoffee.HeavenCoffeeRestaurant.controller;
 
+import heavencoffee.HeavenCoffeeRestaurant.model.HeavenCoffeeOrder;
 import heavencoffee.HeavenCoffeeRestaurant.model.OrderReceipt;
 import heavencoffee.HeavenCoffeeRestaurant.service.HeavenCoffeeOrderService;
 import heavencoffee.HeavenCoffeeRestaurant.service.OrderReceiptService;
@@ -29,8 +30,10 @@ public class OrderReceiptController {
     public String createOrderReceiptForm(Model model){
         OrderReceipt orderReceipt = new OrderReceipt();
         List<OrderReceipt> orderReceipts = orderReceiptService.findAllOrderReceipts();
+        List<HeavenCoffeeOrder> heavenCoffeeOrders = heavenCoffeeOrderService.findAllHeavenCoffeeOrders();
         model.addAttribute("orderReceipts", orderReceipts);
         model.addAttribute("orderReceipt", orderReceipt);
+        model.addAttribute("heavenCoffeeOrders", heavenCoffeeOrders);
         return "OrderReceipt/OrderReceipt";
     }
 
@@ -45,9 +48,11 @@ public class OrderReceiptController {
     //Find OrderReceipt by ID
     @GetMapping("/{orderReceiptId}/edit")
     public String editOrderReceiptForm(@PathVariable UUID orderReceiptId, Model model) {
-        OrderReceipt orderReceipt = orderReceiptService.findById(orderReceiptId);
+        OrderReceipt orderReceipt = orderReceiptService.findOrderById(orderReceiptId);
+        List<HeavenCoffeeOrder> heavenCoffeeOrders = heavenCoffeeOrderService.findAllHeavenCoffeeOrders();
         model.addAttribute("orderReceipt", orderReceipt);
         model.addAttribute("orderReceiptId", orderReceiptId); // Add this line to pass orderReceiptId to the view
+        model.addAttribute("heavenCoffeeOrders", heavenCoffeeOrders);
         return "OrderReceipt/EditOrderReceipt";
     }
 
@@ -58,9 +63,9 @@ public class OrderReceiptController {
         try {
             orderReceiptService.updateOrderReceipt(orderReceiptId, updatedOrderReceipt);
             return "redirect:/orderReceipts";
-        } catch (RuntimeException e) {
+        } catch (RuntimeException ex) {
             // Handle the exception (log it or add an error message to the redirect attributes)
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
             return "redirect:/orderReceipts";
         }
     }

@@ -29,7 +29,7 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
     }
 
     @Override
-    public HeavenCoffeeUser findById(UUID userId) {
+    public HeavenCoffeeUser findUserById(UUID userId) {
         return heavenCoffeeUserRepository.findById(userId).orElse(null);
     }
 
@@ -44,7 +44,6 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
             existingHeavenCoffeeUser.setEmail(updatedHeavenCoffeeUser.getEmail());
             existingHeavenCoffeeUser.setPassword(updatedHeavenCoffeeUser.getPassword());
             existingHeavenCoffeeUser.setUserRole(updatedHeavenCoffeeUser.getUserRole());
-            existingHeavenCoffeeUser.setModifiedAt(updatedHeavenCoffeeUser.getModifiedAt());
             return heavenCoffeeUserRepository.save(existingHeavenCoffeeUser);
         } else {
             throw new RuntimeException("Heaven Coffee User with ID " + userId + " is not found!");

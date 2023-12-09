@@ -30,7 +30,7 @@ public class OrderReceiptServiceImpl implements OrderReceiptService {
     }
 
     @Override
-    public OrderReceipt findById(UUID orderReceiptId) {
+    public OrderReceipt findOrderById(UUID orderReceiptId) {
         return orderReceiptRepository.findById(orderReceiptId).orElse(null);
     }
 

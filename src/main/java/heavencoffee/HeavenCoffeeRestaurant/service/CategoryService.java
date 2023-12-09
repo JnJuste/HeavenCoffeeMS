@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface CategoryService {
     List<Category> findAllCategories();
     void saveCategory(Category category);
-    Category findById(UUID categoryId);
+    Category findCategoryById(UUID categoryId);
     void updateCategory(UUID categoryId, Category updatedCategory);
     void deleteCategory(UUID categoryId);
 }

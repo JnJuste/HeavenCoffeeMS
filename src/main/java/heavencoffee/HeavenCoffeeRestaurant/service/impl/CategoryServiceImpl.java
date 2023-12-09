@@ -35,7 +35,6 @@ public class CategoryServiceImpl implements CategoryService {
             Category existingCategory = optionalCategory.get();
             existingCategory.setCategoryCode(updatedCategory.getCategoryCode());
             existingCategory.setCategoryName(updatedCategory.getCategoryName());
-            existingCategory.setModifiedAt(updatedCategory.getModifiedAt());
             categoryRepository.save(existingCategory);
         } else {
             throw new RuntimeException("Category with ID " + categoryId + " not found");
@@ -48,7 +47,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category findById(UUID categoryId) {
+    public Category findCategoryById(UUID categoryId) {
         return categoryRepository.findById(categoryId).orElse(null);
     }
 }

@@ -1,9 +1,6 @@
 package heavencoffee.HeavenCoffeeRestaurant.model;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,11 +22,11 @@ public class Item {
     private UUID itemID;
     private String itemCode;
     private String itemName;
+    @ManyToOne
+    private Category category;
     private BigDecimal unitPrice;
     private Integer stockQuantity;
     private EItemStatus itemStatus;
     @CreationTimestamp
     private LocalDateTime createdAt;
-    @CreationTimestamp
-    private LocalDateTime modifiedAt;
 }

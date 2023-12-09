@@ -44,7 +44,7 @@ public class CategoryController {
     //Find Category by ID
     @GetMapping("/{categoryId}/edit")
     public String editCategoryForm(@PathVariable UUID categoryId, Model model) {
-        Category category = categoryService.findById(categoryId);
+        Category category = categoryService.findCategoryById(categoryId);
         model.addAttribute("category", category);
         model.addAttribute("categoryId", categoryId); // Add this line to pass categoryId to the view
         return "Category/EditCategory";

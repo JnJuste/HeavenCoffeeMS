@@ -29,6 +29,4 @@ public class HeavenCoffeeUser {
     private EUserRole userRole;
     @CreationTimestamp
     private LocalDateTime createdAt;
-    @CreationTimestamp
-    private LocalDateTime modifiedAt;
 }

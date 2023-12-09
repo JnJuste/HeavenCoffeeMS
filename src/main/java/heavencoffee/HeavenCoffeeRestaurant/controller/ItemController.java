@@ -1,6 +1,8 @@
 package heavencoffee.HeavenCoffeeRestaurant.controller;
 
+import heavencoffee.HeavenCoffeeRestaurant.model.Category;
 import heavencoffee.HeavenCoffeeRestaurant.model.Item;
+import heavencoffee.HeavenCoffeeRestaurant.service.CategoryService;
 import heavencoffee.HeavenCoffeeRestaurant.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +17,11 @@ import java.util.UUID;
 @RequestMapping("/items")
 public class ItemController {
     private final ItemService itemService;
-
+    private final CategoryService categoryService;
     @Autowired
-    public ItemController(ItemService itemService){
+    public ItemController(ItemService itemService, CategoryService categoryService){
         this.itemService = itemService;
+        this.categoryService = categoryService;
     }
 
     //List all Items
@@ -26,8 +29,10 @@ public class ItemController {
     public String createItemForm(Model model){
         Item item = new Item();
         List<Item> items = itemService.findAllItems();
+        List<Category> categories = categoryService.findAllCategories();
         model.addAttribute("items", items);
         model.addAttribute("item", item);
+        model.addAttribute("categories", categories);
         return "Item/Item";
     }
 
@@ -42,9 +47,11 @@ public class ItemController {
     //Find Item by ID
     @GetMapping("/{itemId}/edit")
     public String editItemForm(@PathVariable UUID itemId, Model model) {
-        Item item = itemService.findById(itemId);
+        Item item = itemService.findItemById(itemId);
+        List<Category> categories = categoryService.findAllCategories();
         model.addAttribute("item", item);
         model.addAttribute("itemId", itemId); // Add this line to pass ItemId to the view
+        model.addAttribute("categories",categories);
         return "Item/EditItem";
     }
 
