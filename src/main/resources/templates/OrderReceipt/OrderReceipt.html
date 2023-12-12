@@ -82,7 +82,7 @@
                   <td th:text="${orderReceipt.heavenCoffeeOrder.quantity}"></td>
                   <td th:text="${orderReceipt.heavenCoffeeOrder.item.unitPrice}"></td>
                   <td th:text="${orderReceipt.heavenCoffeeOrder.totalAmount}"></td>
-                  <td th:text="${orderReceipt.heavenCoffeeOrder.heavenCoffeeUser.userNames}"></td>
+                  <td th:text="${orderReceipt.heavenCoffeeOrder.heavenCoffeeUser.fullNames}"></td>
                   <td th:text="${orderReceipt.receiptDate}" hidden="true"></td>
                   <td>
                     <a th:href="@{/orderReceipts/{orderReceiptId}/edit(orderReceiptId=${orderReceipt.orderReceiptID})}"

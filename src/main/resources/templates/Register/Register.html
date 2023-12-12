@@ -28,6 +28,7 @@
 
     <!-- Template Main CSS File -->
     <link th:href="@{/assets/css/style.css}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,8 +43,8 @@
 
                         <div class="d-flex justify-content-center py-4">
                             <a th:href="@{/index}" class="logo d-flex align-items-center">
-                                <img th:src="@{/assets/img/drinks.jpg}" alt="">
-                                <span class="d-none d-lg-block">HEAVEN COFFEE - REGISTER</span>
+                                <img th:src="@{/assets/img/mediterranean-cuisine.jpg}" alt="">
+                                <span class="d-none d-lg-block">HEAVEN COFFEE</span>
                             </a>
                         </div><!-- End Logo -->
 
@@ -56,32 +57,49 @@
                                     <p class="text-center small">Enter your personal details to create account</p>
                                 </div>
 
-                                <form class="row g-3 needs-validation" novalidate>
+                                <form class="row g-3 needs-validation" novalidate th:action="@{/registerUser/new}" th:object="${heavenCoffeeUser}">
                                     <div class="col-12">
-                                        <label for="yourName" class="form-label">Your Name:</label>
-                                        <input type="text" name="name" class="form-control" id="yourName" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                        <label for="fullNames" class="form-label">Your Full Names:</label>
+                                        <input type="text" name="fullNames" class="form-control" id="fullNames" th:field="*{fullNames}" required>
+                                        <div class="invalid-feedback">Please, enter your full names!</div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourEmail" class="form-label">Your Email:</label>
-                                        <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label for="yourUsername" class="form-label">Username</label>
+                                        <label for="userName" class="form-label">Your Username:</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                            <input type="text" name="username" class="form-control" id="yourUsername" required>
-                                            <div class="invalid-feedback">Please choose a username.</div>
+                                            <input type="text" name="userName" class="form-control" id="userName" th:field="*{userName}" required>
+                                            <div class="invalid-feedback">Please choose a username!</div>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourPassword" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                        <label for="phoneNumber" class="form-label">Your Phone Number:</label>
+                                        <input type="tel" name="phoneNumber" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" required>
+                                        <div class="invalid-feedback">Please enter a valid Phone Number!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourEmail" class="form-label">Your Email:</label>
+                                        <input type="email" name="email" class="form-control" id="yourEmail" th:field="*{email}" required>
+                                        <div class="invalid-feedback">Please enter a valid Email address!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourPassword" class="form-label">Your Password:</label>
+                                        <input type="password" name="password" class="form-control" id="yourPassword" th:field="*{password}" required>
                                         <div class="invalid-feedback">Please enter your password!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="userRole" class="col-sm-12 col-form-label">Your Role:</label>
+                                        <div class="col-sm-12">
+                                            <select class="form-control" id="userRole" name="userRole" th:field="*{userRole}" required>
+                                                <!-- Iterate over enum values and populate options -->
+                                                <option th:each="role : ${T(heavencoffee.HeavenCoffeeRestaurant.model.EUserRole).values()}"
+                                                        th:value="${role}" th:text="${role}"></option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="col-12">
@@ -95,11 +113,15 @@
                                         <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                     </div>
                                     <div class="col-12">
-                                        <p class="small mb-0">Already have an account? <a th:href="@{/Login/Login}">Log in</a></p>
+                                        <p class="small mb-0">Already have an account? <a th:href="@{/loginUser}">Log in</a></p>
                                     </div>
                                 </form>
 
                             </div>
+                        </div>
+
+                        <div class="copyright">
+                            &copy; Copyright <strong><span>JnJuste</span></strong>. All Rights Reserved
                         </div>
 
                         <div class="credits">

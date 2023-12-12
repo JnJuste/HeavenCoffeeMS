@@ -38,8 +38,8 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
         Optional<HeavenCoffeeUser> optionalHeavenCoffeeUser = heavenCoffeeUserRepository.findById(userId);
         if (optionalHeavenCoffeeUser.isPresent()) {
             HeavenCoffeeUser existingHeavenCoffeeUser = optionalHeavenCoffeeUser.get();
-            existingHeavenCoffeeUser.setUserCode(updatedHeavenCoffeeUser.getUserCode());
-            existingHeavenCoffeeUser.setUserNames(updatedHeavenCoffeeUser.getUserNames());
+            existingHeavenCoffeeUser.setFullNames(updatedHeavenCoffeeUser.getFullNames());
+            existingHeavenCoffeeUser.setUserName(updatedHeavenCoffeeUser.getUserName());
             existingHeavenCoffeeUser.setPhoneNumber(updatedHeavenCoffeeUser.getPhoneNumber());
             existingHeavenCoffeeUser.setEmail(updatedHeavenCoffeeUser.getEmail());
             existingHeavenCoffeeUser.setPassword(updatedHeavenCoffeeUser.getPassword());

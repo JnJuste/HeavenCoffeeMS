@@ -27,8 +27,8 @@ public class HeavenCoffeeUserController {
     // Send email to the registered users
     @GetMapping("/email")
     public String sendEmail(){
-        String toEmail = "jeanjusteirakoze@gmail.com";
-        String subjectEmail = "Account Created Successful ";
+        String toEmail = "mugishathierry65@gmail.com";
+        String subjectEmail = "Account Created Successful";
         String bodyEmail = "HELLO, Dear User Your Account has been created. You can now login!";
         emailService.sendEmail(toEmail, subjectEmail, bodyEmail);
         return "redirect:/heavenCoffeeUsers";
@@ -62,7 +62,6 @@ public class HeavenCoffeeUserController {
         model.addAttribute("userId", userId); // Add this line to pass ItemId to the view
         return "HeavenCoffeeUser/EditHeavenCoffeeUser";
     }
-
 
     // Update User
     @PostMapping("/{userId}/update")
