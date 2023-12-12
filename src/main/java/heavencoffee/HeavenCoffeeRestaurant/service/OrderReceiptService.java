@@ -9,8 +9,8 @@ import java.util.UUID;
 @Service
 public interface OrderReceiptService {
     List<OrderReceipt> findAllOrderReceipts();
-    OrderReceipt saveOrderReceipt(OrderReceipt orderReceipt);
+    void saveOrderReceipt(OrderReceipt orderReceipt);
     OrderReceipt findOrderById(UUID orderReceiptId);
-    OrderReceipt updateOrderReceipt(UUID orderReceiptId, OrderReceipt updatedOrderReceipt);
+    void updateOrderReceipt(UUID orderReceiptId, OrderReceipt updatedOrderReceipt);
     void deleteOrderReceipt(UUID orderReceiptId);
 }

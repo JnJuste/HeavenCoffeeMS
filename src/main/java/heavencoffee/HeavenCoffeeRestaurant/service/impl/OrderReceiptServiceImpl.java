@@ -25,8 +25,8 @@ public class OrderReceiptServiceImpl implements OrderReceiptService {
     }
 
     @Override
-    public OrderReceipt saveOrderReceipt(OrderReceipt orderReceipt) {
-        return orderReceiptRepository.save(orderReceipt);
+    public void saveOrderReceipt(OrderReceipt orderReceipt) {
+        orderReceiptRepository.save(orderReceipt);
     }
 
     @Override
@@ -35,14 +35,14 @@ public class OrderReceiptServiceImpl implements OrderReceiptService {
     }
 
     @Override
-    public OrderReceipt updateOrderReceipt(UUID orderReceiptId, OrderReceipt updatedOrderReceipt) {
+    public void updateOrderReceipt(UUID orderReceiptId, OrderReceipt updatedOrderReceipt) {
         Optional<OrderReceipt> optionalOrderReceipt = orderReceiptRepository.findById(orderReceiptId);
         if (optionalOrderReceipt.isPresent()) {
             OrderReceipt existingOrderReceipt = optionalOrderReceipt.get();
             existingOrderReceipt.setOrderReceiptCode(updatedOrderReceipt.getOrderReceiptCode());
             existingOrderReceipt.setHeavenCoffeeOrder(updatedOrderReceipt.getHeavenCoffeeOrder());
             existingOrderReceipt.setReceiptDate(updatedOrderReceipt.getReceiptDate());
-            return orderReceiptRepository.save(existingOrderReceipt);
+            orderReceiptRepository.save(existingOrderReceipt);
         } else {
             throw new RuntimeException("Order Receipt with ID " + orderReceiptId + " is not found!");
         }

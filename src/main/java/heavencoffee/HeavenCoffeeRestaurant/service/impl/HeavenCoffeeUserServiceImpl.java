@@ -24,8 +24,8 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
     }
 
     @Override
-    public HeavenCoffeeUser saveHeavenCoffeeUser(HeavenCoffeeUser heavenCoffeeUser) {
-        return heavenCoffeeUserRepository.save(heavenCoffeeUser);
+    public void saveHeavenCoffeeUser(HeavenCoffeeUser heavenCoffeeUser) {
+        heavenCoffeeUserRepository.save(heavenCoffeeUser);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
     }
 
     @Override
-    public HeavenCoffeeUser updateHeavenCoffeeUser(UUID userId, HeavenCoffeeUser updatedHeavenCoffeeUser) {
+    public void updateHeavenCoffeeUser(UUID userId, HeavenCoffeeUser updatedHeavenCoffeeUser) {
         Optional<HeavenCoffeeUser> optionalHeavenCoffeeUser = heavenCoffeeUserRepository.findById(userId);
         if (optionalHeavenCoffeeUser.isPresent()) {
             HeavenCoffeeUser existingHeavenCoffeeUser = optionalHeavenCoffeeUser.get();
@@ -44,7 +44,7 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
             existingHeavenCoffeeUser.setEmail(updatedHeavenCoffeeUser.getEmail());
             existingHeavenCoffeeUser.setPassword(updatedHeavenCoffeeUser.getPassword());
             existingHeavenCoffeeUser.setUserRole(updatedHeavenCoffeeUser.getUserRole());
-            return heavenCoffeeUserRepository.save(existingHeavenCoffeeUser);
+            heavenCoffeeUserRepository.save(existingHeavenCoffeeUser);
         } else {
             throw new RuntimeException("Heaven Coffee User with ID " + userId + " is not found!");
         }

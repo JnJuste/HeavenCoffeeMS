@@ -9,8 +9,8 @@ import java.util.UUID;
 @Repository
 public interface HeavenCoffeeUserService {
     List<HeavenCoffeeUser> findAllHeavenCoffeeUsers();
-    HeavenCoffeeUser saveHeavenCoffeeUser(HeavenCoffeeUser heavenCoffeeUser);
+    void saveHeavenCoffeeUser(HeavenCoffeeUser heavenCoffeeUser);
     HeavenCoffeeUser findUserById(UUID userId);
-    HeavenCoffeeUser updateHeavenCoffeeUser(UUID userId, HeavenCoffeeUser updatedHeavenCoffeeUser);
+    void updateHeavenCoffeeUser(UUID userId, HeavenCoffeeUser updatedHeavenCoffeeUser);
     void deleteHeavenCoffeeUser(UUID userId);
 }
