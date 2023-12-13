@@ -6,13 +6,12 @@ import heavencoffee.HeavenCoffeeRestaurant.service.HeavenCoffeeUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
     private final HeavenCoffeeUserRepository heavenCoffeeUserRepository;
+
 
     @Autowired
     public HeavenCoffeeUserServiceImpl(HeavenCoffeeUserRepository heavenCoffeeUserRepository){
@@ -54,4 +53,5 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
     public void deleteHeavenCoffeeUser(UUID userId) {
         heavenCoffeeUserRepository.deleteById(userId);
     }
+
 }

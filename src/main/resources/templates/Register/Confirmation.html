@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Registration Confirmation</title>
 
-    <title>Not Found 404 - Heaven Coffee Restaurant</title>
+    <!-- Meta Tags -->
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -28,24 +29,31 @@
 
     <!-- Template Main CSS File -->
     <link th:href="@{/assets/css/style.css}" rel="stylesheet">
-
+    <style>
+        .confirmation img {
+            max-width: 100%; /* Set the maximum width of the image */
+            height: auto; /* Maintain the aspect ratio */
+        }
+    </style>
 
 </head>
 
 <body>
-
 <main>
     <div class="container">
-
-        <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
-            <h1>404</h1>
-            <h2>The page you are looking for doesn't exist.</h2>
-            <a class="btn" th:href="@{/index}">Back to home</a>
-            <img th:src="@{/assets/img/not-found.svg}" class="img-fluid py-5" alt="Page Not Found">
+        <section class="section confirmation min-vh-100 d-flex flex-column align-items-center justify-content-center">
+            <div class="confirmation-content text-center">
+                <h1 class="mb-4">Registration Successful!</h1>
+                <p class="mb-4">An email has been sent to you for account verification. Please check your inbox.</p>
+                <!-- Login and Register Links -->
+                <div class="login-register-section">
+                    <a th:href="@{/loginUser}" class="btn btn-info">Login</a>
+                </div>
+            </div>
+            <img th:src="@{/assets/img/hook.jpg}" class="img-fluid py-5" alt="Confirmation Image">
         </section>
-
     </div>
-</main><!-- End #main -->
+</main>
 
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
@@ -60,19 +68,19 @@
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
-    <script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
-    <script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
-    <script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
-    <script th:src="@{assets/vendor/quill/quill.min.js}"></script>
-    <script th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
-    <script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
-    <script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
 
-    <!-- Template Main JS File -->
-    <script th:src="@{assets/js/main.js}"></script>
+<!-- Vendor JS Files -->
+<script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
+<script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
+<script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
+<script th:src="@{assets/vendor/quill/quill.min.js}"></script>
+<script th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
+<script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
+<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
 
+<!-- Template Main JS File -->
+<script th:src="@{assets/js/main.js}"></script>
 </body>
 
 </html>

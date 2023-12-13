@@ -57,7 +57,7 @@
                                     <p class="text-center small">Enter your personal details to create account</p>
                                 </div>
 
-                                <form class="row g-3 needs-validation" novalidate th:action="@{/registerUser/new}" th:object="${heavenCoffeeUser}">
+                                <form class="row g-3 needs-validation" novalidate th:action="@{/registerUser/new}" th:object="${heavenCoffeeUser}"  method="post">
                                     <div class="col-12">
                                         <label for="fullNames" class="form-label">Your Full Names:</label>
                                         <input type="text" name="fullNames" class="form-control" id="fullNames" th:field="*{fullNames}" required>
@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="copyright">
-                            &copy; Copyright <strong><span>JnJuste</span></strong>. All Rights Reserved
+                            &copy; Copyright <strong><span>Heaven Coffee Restaurant</span></strong>. All Rights Reserved!
                         </div>
 
                         <div class="credits">
