@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 @Controller
 @RequestMapping("/loginUser")
@@ -28,23 +28,5 @@ public class LoginController{
         return "Login/Login";
     }
 
-    @PostMapping("/authenticate")
-    public String authenticateUser(HeavenCoffeeUser heavenCoffeeUser) {
-        try {
-            // Perform authentication using the HeavenCoffeeLoginService
-            boolean isAuthenticated = heavenCoffeeLoginService.authenticate(heavenCoffeeUser.getEmail(), heavenCoffeeUser.getPassword());
 
-            if (isAuthenticated) {
-                // Redirect to a dashboard or home page upon successful authentication
-                return "redirect:/dashboard";
-            } else {
-                // Redirect back to the login page with an error message
-                return "redirect:/login?error";
-            }
-        } catch (Exception ex) {
-            // Log the exception or handle it appropriately
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, "Failed to authenticate user", ex);
-            return "redirect:/login?error";
-        }
-    }
 }

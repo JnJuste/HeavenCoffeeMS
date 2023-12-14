@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -29,4 +30,10 @@ public class HeavenCoffeeUser {
     private EUserRole userRole;
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    // Hash the password using bcrypt before saving it
+    public void setPassword(String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(password);
+    }
 }

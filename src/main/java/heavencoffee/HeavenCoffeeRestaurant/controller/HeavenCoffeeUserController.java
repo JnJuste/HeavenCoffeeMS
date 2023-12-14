@@ -40,6 +40,8 @@ public class HeavenCoffeeUserController {
     @PostMapping("/new")
     public String saveNewUser(@ModelAttribute("heavenCoffeeUser") HeavenCoffeeUser heavenCoffeeUser) {
         try {
+            // Set the password and save the user
+            heavenCoffeeUser.setPassword(heavenCoffeeUser.getPassword());
             heavenCoffeeUserService.saveHeavenCoffeeUser(heavenCoffeeUser);
 
             // Extract the full name from the HeavenCoffeeUser object
@@ -74,7 +76,7 @@ public class HeavenCoffeeUserController {
                     "Jean Juste IRAKOZE<br/>" +
                     "Manager<br/>" +
                     "Heaven Coffee Restaurant</p>" +
-                    "<p>Click the link below to verify your email:<br/>" +
+                    //"<p>Click the link below to verify your email:<br/>" +
                     "</body></html>", fullName);
             // Use the EmailService to send the email
             emailService.sendEmail(toEmail, subject, body);
