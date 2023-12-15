@@ -4,7 +4,6 @@ import heavencoffee.HeavenCoffeeRestaurant.model.HeavenCoffeeUser;
 import heavencoffee.HeavenCoffeeRestaurant.repository.HeavenCoffeeUserRepository;
 import heavencoffee.HeavenCoffeeRestaurant.service.LoginHeavenCoffeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,8 +20,13 @@ public class LoginHeavenCoffeeServiceImpl implements LoginHeavenCoffeeService {
         // Find the user by email
         HeavenCoffeeUser user = heavenCoffeeUserRepository.findByEmail(email);
 
+        System.out.println(user);
+        if(user == null){
+            return  false;
+
+        }
         // Check if the user exists and the password is correct
-        return user != null && passwordMatches(password, user.getPassword());
+        return user.getPassword().equals(password);
     }
 
     @Override
@@ -34,9 +38,8 @@ public class LoginHeavenCoffeeServiceImpl implements LoginHeavenCoffeeService {
         return (user != null) ? user.getUserRole().toString() : null;
     }
 
-    private boolean passwordMatches(String rawPassword, String encodedPassword) {
+    /*private boolean passwordMatches(String rawPassword, String encodedPassword) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.matches(rawPassword, encodedPassword);
-    }
-
+    }*/
 }

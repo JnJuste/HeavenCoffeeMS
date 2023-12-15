@@ -32,8 +32,8 @@ public class HeavenCoffeeUser {
     private LocalDateTime createdAt;
 
     // Hash the password using bcrypt before saving it
-    public void setPassword(String password) {
+    /*public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(password);
-    }
+    }*/
 }
