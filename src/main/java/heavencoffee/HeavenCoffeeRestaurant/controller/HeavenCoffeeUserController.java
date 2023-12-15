@@ -73,10 +73,8 @@ public class HeavenCoffeeUserController {
                     "If you have any questions or need assistance, please don't hesitate to contact our management team.</p>" +
                     "<p>We appreciate your commitment to excellence and look forward to working together to make Heaven Coffee a great place for both our customers and our team.</p>" +
                     "<p>Best regards,<br/>" +
-                    "Jean Juste IRAKOZE<br/>" +
-                    "Manager<br/>" +
+                    "Management Team<br/>" +
                     "Heaven Coffee Restaurant</p>" +
-                    //"<p>Click the link below to verify your email:<br/>" +
                     "</body></html>", fullName);
             // Use the EmailService to send the email
             emailService.sendEmail(toEmail, subject, body);
