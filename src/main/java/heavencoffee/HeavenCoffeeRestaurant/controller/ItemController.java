@@ -34,10 +34,10 @@ public class ItemController {
             model.addAttribute("items", items);
             model.addAttribute("item", item);
             model.addAttribute("categories", categories);
-            return "Item/Item";
+            return "Item";
         } catch (Exception ex) {
             // Log the exception or handle it as needed
-            return "Item/Item"; // Redirect to an error page or display a generic error message
+            return "Item"; // Redirect to an error page or display a generic error message
         }
     }
 
@@ -64,10 +64,10 @@ public class ItemController {
             model.addAttribute("item", item);
             model.addAttribute("itemId", itemId); // Add this line to pass ItemId to the view
             model.addAttribute("categories", categories);
-            return "Item/EditItem";
+            return "EditItem";
         } catch (Exception ex) {
             // Log the exception or handle it as needed
-            return "Item/EditItem";
+            return "EditItem";
         }
     }
 

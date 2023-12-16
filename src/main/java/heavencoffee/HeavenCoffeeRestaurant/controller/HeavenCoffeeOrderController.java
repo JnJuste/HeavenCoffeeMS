@@ -43,7 +43,7 @@ public class HeavenCoffeeOrderController {
         model.addAttribute("heavenCoffeeUsers", heavenCoffeeUsers);
         model.addAttribute("items", items);
 
-        return "HeavenCoffeeOrder/HeavenCoffeeOrder";
+        return "HeavenCoffeeOrder";
     }
 
     //Save a new Order
@@ -63,7 +63,7 @@ public class HeavenCoffeeOrderController {
         model.addAttribute("heavenCoffeeUsers", heavenCoffeeUsers);
         model.addAttribute("items", items);
         model.addAttribute("orderId", orderId); // Add this line to pass ItemId to the view
-        return "HeavenCoffeeOrder/EditHeavenCoffeeOrder";
+        return "EditHeavenCoffeeOrder";
     }
 
 

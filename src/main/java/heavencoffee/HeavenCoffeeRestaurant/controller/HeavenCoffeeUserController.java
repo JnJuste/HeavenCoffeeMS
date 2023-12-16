@@ -34,7 +34,7 @@ public class HeavenCoffeeUserController {
         model.addAttribute("heavenCoffeeUsers", heavenCoffeeUsers);
         model.addAttribute("heavenCoffeeUser", heavenCoffeeUser);
 
-        return "HeavenCoffeeUser/HeavenCoffeeUser";
+        return "HeavenCoffeeUser";
     }
 
     @PostMapping("/new")
@@ -90,7 +90,7 @@ public class HeavenCoffeeUserController {
         HeavenCoffeeUser heavenCoffeeUser = heavenCoffeeUserService.findUserById(userId);
         model.addAttribute("heavenCoffeeUser", heavenCoffeeUser);
         model.addAttribute("userId", userId); // Add this line to pass ItemId to the view
-        return "HeavenCoffeeUser/EditHeavenCoffeeUser";
+        return "EditHeavenCoffeeUser";
     }
 
     // Update User

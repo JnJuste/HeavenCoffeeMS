@@ -29,7 +29,7 @@ public class RegisterController {
     public String createUserForm(Model model) {
         HeavenCoffeeUser heavenCoffeeUser = new HeavenCoffeeUser();
         model.addAttribute("heavenCoffeeUser", heavenCoffeeUser);
-        return "Register/Register";
+        return "Register";
     }
 
     @PostMapping("/new")
@@ -81,7 +81,7 @@ public class RegisterController {
 
     @GetMapping("/confirmation")
     public String showConfirmationPage() {
-        return "Register/Confirmation";
+        return "Confirmation";
     }
 
 }

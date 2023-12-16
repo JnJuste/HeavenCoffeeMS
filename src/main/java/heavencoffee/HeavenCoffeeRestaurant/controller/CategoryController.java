@@ -30,7 +30,7 @@ public class CategoryController {
         List<Category> categories = categoryService.findAllCategories();
         model.addAttribute("categories", categories);
         model.addAttribute("category", category);
-        return "Category/Category";
+        return "Category";
     }
 
 
@@ -47,7 +47,7 @@ public class CategoryController {
         Category category = categoryService.findCategoryById(categoryId);
         model.addAttribute("category", category);
         model.addAttribute("categoryId", categoryId); // Add this line to pass categoryId to the view
-        return "Category/EditCategory";
+        return "EditCategory";
     }
 
 

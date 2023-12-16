@@ -30,7 +30,7 @@ public class LoginController{
     @GetMapping
     public String showLoginForm(Model model) {
         model.addAttribute("heavenCoffeeUser", new HeavenCoffeeUser());
-        return "Login/Login";
+        return "Login";
     }
 
     @PostMapping("/authenticate")
@@ -69,7 +69,7 @@ public class LoginController{
         } else {
             // Handle failed authentication
             model.addAttribute("error", "Invalid credentials");
-            return "Login/Login";
+            return "Login";
         }
     }
     @PostMapping("/logout")

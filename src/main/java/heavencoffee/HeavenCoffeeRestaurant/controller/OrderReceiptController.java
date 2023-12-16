@@ -34,7 +34,7 @@ public class OrderReceiptController {
         model.addAttribute("orderReceipts", orderReceipts);
         model.addAttribute("orderReceipt", orderReceipt);
         model.addAttribute("heavenCoffeeOrders", heavenCoffeeOrders);
-        return "OrderReceipt/OrderReceipt";
+        return "OrderReceipt";
     }
 
 
@@ -53,7 +53,7 @@ public class OrderReceiptController {
         model.addAttribute("orderReceipt", orderReceipt);
         model.addAttribute("orderReceiptId", orderReceiptId); // Add this line to pass orderReceiptId to the view
         model.addAttribute("heavenCoffeeOrders", heavenCoffeeOrders);
-        return "OrderReceipt/EditOrderReceipt";
+        return "EditOrderReceipt";
     }
 
 
