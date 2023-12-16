@@ -27,6 +27,7 @@ public class LoginHeavenCoffeeServiceImpl implements LoginHeavenCoffeeService {
         }
         // Check if the user exists and the password is correct
         return user.getPassword().equals(password);
+        //return passwordMatches(password, user.getPassword());
     }
 
     @Override
