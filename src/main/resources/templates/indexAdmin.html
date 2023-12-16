@@ -65,16 +65,6 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " th:href="@{/indexAdmin}">
-          <i class="bi bi-grid"></i>
-          <span>Admin Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#coffeeUsers-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>HEAVEN COFFEE USERS</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
         <ul id="coffeeUsers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a class="" th:href="@{/heavenCoffeeUsers}">
@@ -85,9 +75,6 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#categories-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>CATEGORIES</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
         <ul id="categories-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a class="" th:href="@{/categories}">
@@ -98,9 +85,6 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#items-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person"></i><span>ITEMS</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
         <ul id="items-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a class="" th:href="@{/items}">
@@ -111,9 +95,6 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#coffeeOrders-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-card-list"></i><span>HEAVEN COFFEE ORDERS</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
         <ul id="coffeeOrders-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a class="" th:href="@{/heavenCoffeeOrders}">
@@ -125,9 +106,6 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#orderReceipt-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>ORDER RECEIPTS</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
         <ul id="orderReceipt-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
           <li>
@@ -161,16 +139,6 @@
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a th:href="@{/index}">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
 
     <!--<section class="section dashboard">
       <div class="row">
