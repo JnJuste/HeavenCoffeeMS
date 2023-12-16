@@ -66,7 +66,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#coffeeUsers-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#coffeeUsers-nav" data-bs-toggle="collapse" th:href="@{/heavenCoffeeUsers}">
           <i class="bi bi-menu-button-wide"></i><span>HEAVEN COFFEE USERS</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="coffeeUsers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -79,6 +79,9 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#categories-nav" data-bs-toggle="collapse" th:href="@{/categories}">
+          <i class="bi bi-bar-chart"></i><span>CATEGORIES</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
         <ul id="categories-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a class="" th:href="@{/categories}">
@@ -89,6 +92,9 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#items-nav" data-bs-toggle="collapse" th:href="@{/items}">
+          <i class="bi bi-person"></i><span>ITEMS</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
         <ul id="items-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a class="" th:href="@{/items}">
@@ -99,6 +105,9 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#coffeeOrders-nav" data-bs-toggle="collapse" th:href="@{/heavenCoffeeOrders}">
+          <i class="bi bi-card-list"></i><span>HEAVEN COFFEE ORDERS</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
         <ul id="coffeeOrders-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a class="" th:href="@{/heavenCoffeeOrders}">
@@ -109,6 +118,9 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#orderReceipt-nav" data-bs-toggle="collapse" th:href="@{/orderReceipts}">
+          <i class="bi bi-gem"></i><span>ORDER RECEIPTS</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
         <ul id="orderReceipt-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
           <li>
@@ -124,5 +136,6 @@
         </ul>
       </li><!-- End Forms Nav -->
 
+    </ul>
 
   </aside><!-- End Sidebar-->
