@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/Components/header"></th:block>
+
+<main id="main" class="main">
+
+    <div>
+        <h1>EDIT HEAVEN COFFEE RECEIPT</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Edit Order Receipt Form</h5>
+
+                <!-- Vertical Form -->
+                <form class="row g-3" th:action="@{/orderReceipts/{orderReceiptId}/update(orderReceiptId=${orderReceiptId})}" th:object="${orderReceipt}" method="post">
+                    <input type="hidden" th:field="*{orderReceiptID}" />
+                    <div class="col-12">
+                        <label for="itemCode" class="form-label">Order Receipt Code:</label>
+                        <input type="text" class="form-control" id="itemCode" name="itemCode" th:field="*{orderReceiptCode}" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="col-sm-12 col-form-label">ORDER DETAILS:</label>
+                        <div class="col-sm-12">
+                            <label for="heavenCoffeeOrder"></label><select class="form-select" name="heavenCoffeeOrder" id="heavenCoffeeOrder" th:field="*{heavenCoffeeOrder.orderID}">
+                            <th:block th:each="orderFrom: ${heavenCoffeeOrders}">
+                                <option th:value="${orderFrom.orderID}">[[${orderFrom.orderCode}]] - [[${orderFrom.item.itemName}]]</option>
+                            </th:block>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button th:href="@{/orderReceipts}" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form><!-- Vertical Form -->
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<th:block th:replace="/Components/footer :: #footer"></th:block> <!--Link the footer -->
+
+<!-- Vendor JS Files -->
+<script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
+<script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
+<script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
+<script th:src="@{assets/vendor/quill/quill.min.js}"></script>
+<script th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
+<script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
+<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{assets/js/main.js}"></script>
 
 </body>
+
 </html>

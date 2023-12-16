@@ -20,11 +20,11 @@
             </div>
 
             <div class="col-12">
-              <label class="col-sm-12 col-form-label">User Code & Names:</label>
+              <label class="col-sm-12 col-form-label">User Full Names:</label>
               <div class="col-sm-12">
                 <label for="heavenCoffeeUser"></label><select class="form-select" name="heavenCoffeeUser" id="heavenCoffeeUser" th:field="*{heavenCoffeeUser.userID}">
                   <th:block th:each="userFrom: ${heavenCoffeeUsers}">
-                    <option th:value="${userFrom.userID}">[[${userFrom.userCode}]] - [[${userFrom.userNames}]]</option>
+                    <option th:value="${userFrom.userID}">[[${userFrom.fullNames}]]</option>
                   </th:block>
                 </select>
               </div>
@@ -105,8 +105,9 @@
                 <tr>
                   <th scope="col" hidden="true">ID</th>
                   <th scope="col">CODE</th>
-                  <th scope="col">USERNAME</th>
+                  <th scope="col">FULLNAMES</th>
                   <th scope="col">QUANTITY</th>
+                  <th scope="col">UNIT PRICE</th>
                   <th scope="col">ITEM</th>
                   <th scope="col">TOTAL PRICE</th>
                   <th scope="col" hidden="true">ORDERED AT</th>
@@ -117,8 +118,9 @@
                 <tr th:each="heavenCoffeeOrder:${heavenCoffeeOrders}">
                   <td th:text="${heavenCoffeeOrder.orderID}" hidden="true"></td>
                   <td th:text="${heavenCoffeeOrder.orderCode}"></td>
-                  <td th:text="${heavenCoffeeOrder.heavenCoffeeUser.userNames}"></td>
+                  <td th:text="${heavenCoffeeOrder.heavenCoffeeUser.fullNames}"></td>
                   <td th:text="${heavenCoffeeOrder.quantity}"></td>
+                  <td th:text="${heavenCoffeeOrder.item.unitPrice}"></td>
                   <td th:text="${heavenCoffeeOrder.item.itemName}"></td>
                   <td th:text="${heavenCoffeeOrder.totalAmount}"></td>
                   <td th:text="${heavenCoffeeOrder.orderDate}" hidden="true"></td>

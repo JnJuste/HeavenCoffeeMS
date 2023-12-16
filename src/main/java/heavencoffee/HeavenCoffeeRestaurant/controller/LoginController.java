@@ -38,6 +38,14 @@ public class LoginController{
         String email = heavenCoffeeUser.getEmail();
         String password = heavenCoffeeUser.getPassword();
 
+        // Check if the email exists in the database
+        boolean emailExists = loginHeavenCoffeeService.doesEmailExist(email);
+
+        if (!emailExists) {
+            // Handle the case where the email is not present in the database
+            model.addAttribute("error", "Email not found");
+            return "redirect:/error404";
+        }
         // Authenticate the user
         boolean isAuthenticated = loginHeavenCoffeeService.authenticateUser(email, password);
         System.out.println(isAuthenticated);

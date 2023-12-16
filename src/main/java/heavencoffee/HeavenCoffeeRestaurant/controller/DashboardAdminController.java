@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DashboardAdminController {
     @GetMapping("indexAdmin")
-    public String AdminDash(){
+    public String adminDash(){
         return "indexAdmin";
     }
 }

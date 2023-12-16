@@ -77,4 +77,5 @@ public class OrderReceiptController {
         orderReceiptService.deleteOrderReceipt(orderReceiptId);
         return "redirect:/orderReceipts";
     }
+
 }

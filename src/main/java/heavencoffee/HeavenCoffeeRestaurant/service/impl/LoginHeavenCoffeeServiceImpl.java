@@ -31,6 +31,13 @@ public class LoginHeavenCoffeeServiceImpl implements LoginHeavenCoffeeService {
     }
 
     @Override
+    public boolean doesEmailExist(String email) {
+        // Check if the email exists in the database
+        HeavenCoffeeUser user = heavenCoffeeUserRepository.findByEmail(email);
+        return user != null;
+    }
+
+    @Override
     public String getUserRole(String email) {
         // Find the user by email
         HeavenCoffeeUser user = heavenCoffeeUserRepository.findByEmail(email);

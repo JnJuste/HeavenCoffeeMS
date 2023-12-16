@@ -17,15 +17,15 @@
                     <input type="hidden" th:field="*{orderID}" />
                     <div class="col-12">
                         <label for="orderCode" class="form-label">Order Code:</label>
-                        <input type="text" class="form-control" id="orderCode" name="orderCode" th:field="*{orderCode}" required>
+                        <input type="text" class="form-control" id="orderCode" name="orderCode" th:field="*{orderCode}"  readonly required>
                     </div>
 
                     <div class="col-12">
-                        <label class="col-sm-12 col-form-label">User Code & Names:</label>
+                        <label class="col-sm-12 col-form-label">User Full Names:</label>
                         <div class="col-sm-12">
                             <label for="heavenCoffeeUser"></label><select class="form-select" name="heavenCoffeeUser" id="heavenCoffeeUser" th:field="*{heavenCoffeeUser.userID}">
                             <th:block th:each="userFrom: ${heavenCoffeeUsers}">
-                                <option th:value="${userFrom.userID}">[[${userFrom.userCode}]] - [[${userFrom.userNames}]]</option>
+                                <option th:value="${userFrom.userID}">[[${userFrom.fullNames}]]</option>
                             </th:block>
                         </select>
                         </div>
