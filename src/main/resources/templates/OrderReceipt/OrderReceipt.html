@@ -106,43 +106,7 @@
 
   <th:block th:replace="/Components/footer :: #footer"></th:block> <!--Link the footer -->
 
-  <!-- Add this script after including html2pdf.js -->
-  <script>
-    function populateReceiptDetails(orderReceiptId) {
-      // Example static data
-      const receiptDetails = {
-        receiptCode: 'Receipt Code: ' + orderReceiptId,
-        // Add more details as needed
-      };
 
-      // Create a div element to hold the content you want to print
-      const printContainer = document.createElement('div');
-
-      // Populate the container with the receipt details
-      printContainer.innerHTML = `
-              <p>${receiptDetails.receiptCode}</p>
-              <!-- Add more elements for additional details as needed -->
-          `;
-
-      // Create a new window for printing
-      const printWindow = window.open('', '_blank');
-
-      // Append the content to the new window
-      printWindow.document.body.appendChild(printContainer);
-
-      // Use html2pdf.js to generate a PDF and open the print dialog
-      html2pdf(printContainer, {
-        margin: 10,
-        filename: 'receipt.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      }).then(() => {
-        // Close the print window after generating the PDF
-        printWindow.close();
-      });
-    }
-  </script>
 
 <!-- Vendor JS Files -->
   <script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
