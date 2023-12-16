@@ -2,6 +2,8 @@ package heavencoffee.HeavenCoffeeRestaurant.controller;
 
 import heavencoffee.HeavenCoffeeRestaurant.model.HeavenCoffeeUser;
 import heavencoffee.HeavenCoffeeRestaurant.service.LoginHeavenCoffeeService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,4 +64,13 @@ public class LoginController{
             return "Login/Login";
         }
     }
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/index";
+    }
+
 }

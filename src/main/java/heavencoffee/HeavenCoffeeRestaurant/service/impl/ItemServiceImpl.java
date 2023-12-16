@@ -45,6 +45,7 @@ public class ItemServiceImpl implements ItemService {
             existingItem.setUnitPrice(updatedItem.getUnitPrice());
             existingItem.setStockQuantity(updatedItem.getStockQuantity());
             existingItem.setItemStatus(updatedItem.getItemStatus());
+            existingItem.setCreatedAt(updatedItem.getCreatedAt());
             itemRepository.save(existingItem);
         } else {
             throw new RuntimeException("Item with ID " + itemId + " is not found!");

@@ -22,7 +22,6 @@ public class HeavenCoffeeUser {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID userID;
     private String fullNames;
-    private String userName;
     private String phoneNumber;
     private String email;
     private String password;
@@ -30,9 +29,4 @@ public class HeavenCoffeeUser {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    // Hash the password using bcrypt before saving it
-    /*public void setPassword(String password) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
-    }*/
 }

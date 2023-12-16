@@ -21,24 +21,18 @@
             </div>
 
             <div class="col-12">
-              <label for="userName" class="form-label">Username</label>
-              <div class="input-group has-validation">
-                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                <input type="text" name="userName" class="form-control" id="userName" th:field="*{userName}" required>
-                <div class="invalid-feedback">Please choose a username!</div>
-              </div>
-            </div>
-
-            <div class="col-12">
               <label for="phoneNumber" class="form-label">Phone Number:</label>
               <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" required>
               <div class="invalid-feedback">Please enter a valid Phone Number!</div>
             </div>
 
             <div class="col-12">
-              <label for="email" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required>
-              <div class="invalid-feedback">Please enter a valid Email Address!</div>
+              <label for="email" class="form-label">Your Email:</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="email" name="email" class="form-control" id="email" th:field="*{email}" required>
+                <div class="invalid-feedback">Please choose your email!</div>
+              </div>
             </div>
 
             <div class="col-12">
@@ -91,7 +85,6 @@
                 <tr>
                   <th scope="col" hidden="true">ID</th>
                   <th scope="col">NAMES</th>
-                  <th scope="col">USERNAME</th>
                   <th scope="col">PHONE</th>
                   <th scope="col">EMAIL</th>
                   <th scope="col" hidden="true">PASSWORD</th>
@@ -104,7 +97,6 @@
                 <tr th:each="heavenCoffeeUser : ${heavenCoffeeUsers}">
                   <td th:text="${heavenCoffeeUser.userID}" hidden="true"></td>
                   <td th:text="${heavenCoffeeUser.fullNames}"></td>
-                  <td th:text="${heavenCoffeeUser.userName}"></td>
                   <td th:text="${heavenCoffeeUser.phoneNumber}"></td>
                   <td th:text="${heavenCoffeeUser.email}"></td>
                   <td th:text="${heavenCoffeeUser.password}" hidden="true"></td>

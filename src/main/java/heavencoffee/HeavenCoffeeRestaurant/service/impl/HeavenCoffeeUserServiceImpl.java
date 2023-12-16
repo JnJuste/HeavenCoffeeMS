@@ -38,12 +38,11 @@ public class HeavenCoffeeUserServiceImpl implements HeavenCoffeeUserService {
         if (optionalHeavenCoffeeUser.isPresent()) {
             HeavenCoffeeUser existingHeavenCoffeeUser = optionalHeavenCoffeeUser.get();
             existingHeavenCoffeeUser.setFullNames(updatedHeavenCoffeeUser.getFullNames());
-            existingHeavenCoffeeUser.setUserName(updatedHeavenCoffeeUser.getUserName());
             existingHeavenCoffeeUser.setPhoneNumber(updatedHeavenCoffeeUser.getPhoneNumber());
             existingHeavenCoffeeUser.setEmail(updatedHeavenCoffeeUser.getEmail());
             existingHeavenCoffeeUser.setPassword(updatedHeavenCoffeeUser.getPassword());
             existingHeavenCoffeeUser.setUserRole(updatedHeavenCoffeeUser.getUserRole());
-            heavenCoffeeUserRepository.save(existingHeavenCoffeeUser);
+            existingHeavenCoffeeUser.setCreatedAt(updatedHeavenCoffeeUser.getCreatedAt());
         } else {
             throw new RuntimeException("Heaven Coffee User with ID " + userId + " is not found!");
         }
