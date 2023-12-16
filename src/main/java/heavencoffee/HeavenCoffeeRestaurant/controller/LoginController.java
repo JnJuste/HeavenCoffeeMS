@@ -16,6 +16,10 @@ import org.springframework.ui.Model;
 public class LoginController{
     private final LoginHeavenCoffeeService loginHeavenCoffeeService;
 
+    public static class UserRole {
+        public static final String ADMIN = "ADMIN";
+        public static final String STAFF = "STAFF";
+    }
     @Autowired
     public LoginController(LoginHeavenCoffeeService loginHeavenCoffeeService) {
         this.loginHeavenCoffeeService = loginHeavenCoffeeService;
@@ -42,10 +46,10 @@ public class LoginController{
             System.out.println(userRole);
 
             // Redirect based on user role
-            if  (userRole.equals("ADMIN")){
+            if  (userRole.equals(UserRole.ADMIN)){
                 // Redirect to the admin page
                 return "redirect:/indexAdmin";
-            } else if (userRole.equals("STAFF")) {
+            } else if (userRole.equals(UserRole.STAFF)) {
                 // Redirect to the staff page
                 return "redirect:/indexStaff";
             } else {

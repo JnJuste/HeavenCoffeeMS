@@ -27,32 +27,48 @@ public class ItemController {
     //List all Items
     @GetMapping
     public String createItemForm(Model model){
-        Item item = new Item();
-        List<Item> items = itemService.findAllItems();
-        List<Category> categories = categoryService.findAllCategories();
-        model.addAttribute("items", items);
-        model.addAttribute("item", item);
-        model.addAttribute("categories", categories);
-        return "Item/Item";
+        try {
+            Item item = new Item();
+            List<Item> items = itemService.findAllItems();
+            List<Category> categories = categoryService.findAllCategories();
+            model.addAttribute("items", items);
+            model.addAttribute("item", item);
+            model.addAttribute("categories", categories);
+            return "Item/Item";
+        } catch (Exception ex) {
+            // Log the exception or handle it as needed
+            return "Item/Item"; // Redirect to an error page or display a generic error message
+        }
     }
 
 
     //Save a new Category
     @PostMapping("/new")
-    public String saveCategory(@ModelAttribute("item") Item item) {
-        itemService.saveItem(item);
-        return "redirect:/items";
+    public String saveCategory(@ModelAttribute("item") Item item, RedirectAttributes redirectAttributes) {
+        try {
+            itemService.saveItem(item);
+            return "redirect:/items";
+        } catch (Exception ex) {
+            // Handle the exception (log it or add an error message to the redirect attributes)
+            redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
+            return "redirect:/items";
+        }
     }
 
     //Find Item by ID
     @GetMapping("/{itemId}/edit")
     public String editItemForm(@PathVariable UUID itemId, Model model) {
-        Item item = itemService.findItemById(itemId);
-        List<Category> categories = categoryService.findAllCategories();
-        model.addAttribute("item", item);
-        model.addAttribute("itemId", itemId); // Add this line to pass ItemId to the view
-        model.addAttribute("categories",categories);
-        return "Item/EditItem";
+        try {
+            Item item = itemService.findItemById(itemId);
+            List<Category> categories = categoryService.findAllCategories();
+            model.addAttribute("item", item);
+            model.addAttribute("itemId", itemId); // Add this line to pass ItemId to the view
+            model.addAttribute("categories", categories);
+            return "Item/EditItem";
+        } catch (Exception ex) {
+            // Log the exception or handle it as needed
+            return "Item/EditItem";
+        }
     }
 
 
@@ -62,9 +78,9 @@ public class ItemController {
         try {
             itemService.updateItem(itemId, updatedItem);
             return "redirect:/items";
-        } catch (RuntimeException e) {
+        } catch (RuntimeException ex) {
             // Handle the exception (log it or add an error message to the redirect attributes)
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
             return "redirect:/items";
         }
     }
@@ -72,9 +88,15 @@ public class ItemController {
 
     //Delete Item
     @GetMapping("/{itemId}/delete")
-    public String deleteCategory(@PathVariable UUID itemId) {
-        itemService.deleteItem(itemId);
-        return "redirect:/items";
+    public String deleteCategory(@PathVariable UUID itemId, RedirectAttributes redirectAttributes) {
+        try {
+            itemService.deleteItem(itemId);
+            return "redirect:/items";
+        } catch (Exception ex) {
+            // Handle the exception (log it or add an error message to the redirect attributes)
+            redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
+            return "redirect:/items";
+        }
     }
 
 }
